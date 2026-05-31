@@ -193,3 +193,6 @@ doesn't apply.
 | GET | `/positions/:id/candidates` | Candidates for a position (fullName, currentInterviewStep, averageScore, applicationId, candidateId) |
 | GET | `/positions/:id/interviewFlow` | Interview flow + stages (note capital F as the app calls it; `api-spec.yaml` lists lowercase — verify which the backend route accepts) |
 | POST | `/upload` | multer CV upload → `{ filePath, fileType }` |
+
+<!-- app-map-sync: generated against 9fef2c722bc319a25325c1196b2656d26c587eed -->
+

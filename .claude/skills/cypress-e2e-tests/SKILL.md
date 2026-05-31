@@ -26,15 +26,24 @@ seeded database**, not stubs. So before writing, you need to know the real
 routes, the real labels, and the real seed data. That map lives in
 `references/app-map.md` — **read it before writing any spec.** It is the
 difference between a test that passes and one that asserts on text that doesn't
-exist.
+exist. But the map is only as good as it is current: if the app's routes,
+labels, endpoints, or seed data have changed since the map was last generated,
+it will steer you wrong. So step 0 is making sure it's fresh.
 
 ## Workflow
 
-1. **Read `references/app-map.md`.** It has the routes, every component's real
-   selectors and Spanish labels, the seed data (named candidates/positions you
-   can assert on), and the API surface for `cy.request` setup. Don't guess
-   labels or endpoints — they have quirks (e.g. the interview-flow URL the app
-   actually calls is `/positions/:id/interviewFlow`, capital F).
+1. **Make sure `references/app-map.md` is current, then read it.** The map is a
+   derived snapshot and drifts when the source changes. Before trusting it,
+   refresh it with the **`app-map-sync`** skill, which detects (via a git diff
+   from the commit the map was stamped against) whether any source-of-truth file
+   — `App.js`, a component, a backend route, or `seed.ts` — has changed and
+   updates the affected sections. Invoke `app-map-sync` first; it will either
+   report the map is up to date or refresh it. Then read the map: it has the
+   routes, every component's real selectors and Spanish labels, the seed data
+   (named candidates/positions you can assert on), and the API surface for
+   `cy.request` setup. Don't guess labels or endpoints — they have quirks (e.g.
+   the interview-flow URL the app actually calls is
+   `/positions/:id/interviewFlow`, capital F).
 
 2. **Identify the flow** the user asked for and find its component(s) in the
    map. If they were vague ("test the candidate flow"), pick the most likely
