@@ -35,6 +35,8 @@ describe('getCandidatesByPositionService', () => {
       {
         fullName: 'John Doe',
         currentInterviewStep: 'Technical Interview',
+        candidateId: 1,
+        applicationId: 1,
         averageScore: 4,
       },
     ]);
